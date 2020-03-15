@@ -1,0 +1,16 @@
+.button-group{
+    -ms-transform: skewX(-20deg); /* IE 9 */
+    -webkit-transform: skewX(-20deg); /* Safari */
+    transform: skewX(-20deg);
+    background: #000;
+    width: 70%;
+    margin: auto;
+}
+.button-text {
+    -ms-transform: skewX(20deg); /* IE 9 */
+    -webkit-transform: skewX(20deg); /* Safari */
+    transform: skewX(20deg);
+    padding: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
