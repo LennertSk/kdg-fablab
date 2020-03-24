@@ -13,23 +13,26 @@ class CreateAllTables extends Migration
      */
     public function up()
     {
-        Schema::create('toestellen', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
             $table->string('name');
-            $table->string('id_toestel');
+            $table->string('id_toestel')->unique();
             $table->string('location');
             $table->text('description')->nullable();
+            $table->text('specificaties')->nullable();
             $table->integer('is_available')->default('1');
             $table->integer('max_duration_days');
         });
 
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->string('card_number');
+            $table->string('name')->nullable()->nullable();
+            $table->string('email')->unique();
+            $table->string('card_number')->nullable();
             $table->boolean('is_blacklisted')->default('0');
             $table->string('password')->nullable();
             $table->boolean('is_admin')->default('0');
-            $table->string('email')->unique()->nullable();
+            $table->timestamps();
         });
 
         Schema::create('rentals', function (Blueprint $table) {

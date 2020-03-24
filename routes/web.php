@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('ontlenen', 'CardController@index');
+
+Route::post('ontlenen/add', 'CardController@store');
+Route::get('ontlenen/{id}', 'CardController@destroy');
