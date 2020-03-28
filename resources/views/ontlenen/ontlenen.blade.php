@@ -69,8 +69,11 @@
 </div>
 <div class="container fixed-bottom">
 <div class="row pb-4 pt-1 footer">
-      <div class="col-md-6"><button type="submit" class="btn btn-black col-sm-4 float-left">Terug</button></div>
-      <div class="col-md-6"><button type="submit" class="btn btn-black col-sm-4 float-right">Volgende</button></div>
+
+      <div class="col-md-6"><a href="{{ url('/home') }}" class="btn btn-black col-sm-4 float-left" role="button">terug</a></div>
+      @if ($disabled)
+      <div class="col-md-6"><a href="{{ url('/datum') }}" class="btn btn-black col-sm-4 float-right" role="button">volgende</a></div>
+      @endif
     </div>
 </div>
 

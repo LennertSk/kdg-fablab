@@ -14,6 +14,9 @@
     color: #fff;
     text-transform: uppercase;
 }
+.center-me {
+  text-align: center;
+}
 
 // Progress Bar
 .progressbar {
@@ -65,11 +68,11 @@
     }
     &.is-complete {
       color: $green;
-      
       &:before,
       &:after {
         color: #FFF;
         background: $green;
+        border: none;
       }
     }
     &.is-active {

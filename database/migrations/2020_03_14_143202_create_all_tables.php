@@ -21,7 +21,7 @@ class CreateAllTables extends Migration
             $table->text('description')->nullable();
             $table->text('specificaties')->nullable();
             $table->integer('is_available')->default('1');
-            $table->integer('max_duration_days');
+            $table->timestamps();
         });
 
         Schema::create('users', function (Blueprint $table) {
@@ -39,10 +39,12 @@ class CreateAllTables extends Migration
             $table->bigIncrements('id')->unique();
             $table->string('id_toestel');
             $table->string('id_ontlener');
+            $table->string('email_ontlener');
             $table->date('start_datum');
             $table->date('eind_datum');
-            $table->boolean('is_active')->default('0');
+            $table->boolean('is_active')->default('1');
             $table->text('opmerkingen')->nullable();
+            $table->timestamps();
         });
 
     }

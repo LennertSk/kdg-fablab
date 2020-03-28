@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Validator,Redirect,Response;
 use App\Items;
 use Session;
@@ -32,7 +33,9 @@ class CardController extends Controller
         // $cart = $request->session()->get('cart', 'no items found');
         $cart = Session::get('cart');
 
-        return view('ontlenen/ontlenen', compact('cart'));
+        if(empty($cart)) {$disabled = false;} else {$disabled = true;}
+       
+        return view('ontlenen/ontlenen', compact('cart'))->with('disabled', $disabled);
     }
 
     /**
@@ -43,17 +46,28 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+        // $val = $request->validate([
+        //     'id_toestel' => 'bail|required|exists:items|max:255', 
+        // ],[
+        //     'id_toestel.required' => 'Whoops, gelieve een code in te geven.',
+        //     'id_toestel.exists' => 'Whoops, geen match gevonden, heb je zeker de juiste code ingegeven?',
+        // ]);
 
         $val = $request->validate([
-            'id_toestel' => 'bail|required|exists:items|max:255', 
+            'id_toestel' => [
+                'required',
+                'exists:items',
+                Rule::exists('items')->where(function ($query) {
+                    $query->where('is_available', 1);
+                }),
+            ]
         ],[
             'id_toestel.required' => 'Whoops, gelieve een code in te geven.',
             'id_toestel.exists' => 'Whoops, geen match gevonden, heb je zeker de juiste code ingegeven?',
         ]);
 
-        
+
         $cart = Session::get('cart');
-        
         if(isset($cart)) {
             foreach ($cart as $cart_item) {
                 if ( in_array($val['id_toestel'], $cart_item) ){
@@ -61,17 +75,13 @@ class CardController extends Controller
                 }
             }
         }
-
         $getItem = Items::where('id_toestel', $val['id_toestel'])->first();
-
         $item = [
             'name' => $getItem->name,
             'id_toestel' => $getItem->id_toestel,
             'specificaties' => $getItem->specificaties,
         ];
-
         Session::push('cart', $item);
-        
         return redirect('ontlenen');
     }
 

@@ -27,3 +27,13 @@ Route::get('ontlenen', 'CardController@index');
 
 Route::post('ontlenen/add', 'CardController@store');
 Route::get('ontlenen/{id}', 'CardController@destroy');
+Route::post('ontlenen/back', 'CardController@flush');
+
+Route::get('datum', 'RentalController@index');
+Route::post('datum/set', 'RentalController@set');
+
+Route::get('user', 'Usercontroller@index');
+Route::post('user/set', 'Usercontroller@set');
+
+Route::get('overzicht', 'FinalRentalController@index');
+Route::get('overzicht/set', 'FinalRentalController@set');

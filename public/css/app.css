@@ -9968,6 +9968,10 @@ h3 {
   text-transform: uppercase;
 }
 
+.center-me {
+  text-align: center;
+}
+
 .progressbar {
   list-style: none;
   margin: 0;
@@ -10019,6 +10023,7 @@ h3 {
 .progressbar > li.is-complete:before, .progressbar > li.is-complete:after {
   color: #FFF;
   background: #38c172;
+  border: none;
 }
 .progressbar > li.is-active {
   color: #34BEDC;
