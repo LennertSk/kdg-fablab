@@ -21,7 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/indienen', 'ReturnController@index');
+Route::post('/indienen/set', 'ReturnController@set');
+Route::post('/indienen/final', 'ReturnController@final');
 
 Route::get('ontlenen', 'CardController@index');
 

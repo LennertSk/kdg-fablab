@@ -42,6 +42,7 @@ class CreateAllTables extends Migration
             $table->string('email_ontlener');
             $table->date('start_datum');
             $table->date('eind_datum');
+            $table->date('terug_datum');
             $table->boolean('is_active')->default('1');
             $table->text('opmerkingen')->nullable();
             $table->timestamps();
