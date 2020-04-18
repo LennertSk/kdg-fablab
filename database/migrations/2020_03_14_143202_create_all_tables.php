@@ -29,9 +29,8 @@ class CreateAllTables extends Migration
             $table->string('name')->nullable()->nullable();
             $table->string('email')->unique();
             $table->string('card_number')->nullable();
-            $table->boolean('is_blacklisted')->default('0');
             $table->string('password')->nullable();
-            $table->boolean('is_admin')->default('0');
+            $table->boolean('is_admin')->default('1');
             $table->timestamps();
         });
 

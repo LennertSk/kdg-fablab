@@ -10060,6 +10060,27 @@ h3 {
   color: #fff;
 }
 
+.btn-green {
+  background: #38c172;
+  color: #fff;
+  text-transform: uppercase;
+}
+.btn-green:hover {
+  color: #fff;
+}
+
 .footer {
   background: #f8fafc;
+}
+
+.admin-btn {
+  color: #fff;
+}
+
+.table__not-available {
+  color: #a2a2a2;
+}
+
+.te-laat {
+  color: #e3342f;
 }

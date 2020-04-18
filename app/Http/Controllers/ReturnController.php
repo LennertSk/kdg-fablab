@@ -87,7 +87,7 @@ class ReturnController extends Controller
             'is_available' => 1,
         ]);
 
-        Rentals::where('id_toestel', $id)->update([
+        Rentals::where('id_toestel', $id)->where('is_active', '1')->update([
             'is_active' => 0,
             'opmerkingen' => $output,
             'terug_datum' => $current_date,
